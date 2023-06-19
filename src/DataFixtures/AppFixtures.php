@@ -16,7 +16,7 @@ class AppFixtures extends Fixture
             'roles' => ['ROLE_USER', 'ROLE_ADMIN'],
             'firstName' => 'Zoran',
             'lastName' => 'Makrevski',
-            'phone' => '6984919408'
+            'mobilePhone' => '6984919408'
         ]);
         UserFactory::createMany(10);
 
