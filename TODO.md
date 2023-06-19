@@ -2,8 +2,14 @@
 
 ✔️ Make the home page, and add link to the login page
 
-Add some new field in the users and re-create the users. See if you broke something
+✔️ Add some new fields in the users and re-create the users. See if you broke something
+
+<p>Try to add time stampable fields, createdAt and updatedAt</p>
+
 <p>Make the registration page</p>
+
 <p>See if you can make the user registration with email validation</p>
+
 <p>Make forgot password feature</p>
+
 <p>Start working with branches, create new branch for each feature</p>
