@@ -29,6 +29,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     private $plainPassword;
 
+    #[ORM\Column(length: 100)]
+    private ?string $firstName = null;
+
+    #[ORM\Column(length: 100)]
+    private ?string $lastName = null;
+
+    #[ORM\Column(length: 100, nullable: true)]
+    private ?string $mobilePhone = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -106,6 +115,42 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPlainPassword(string $plainPassword): self
     {
         $this->plainPassword = $plainPassword;
+        return $this;
+    }
+
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    public function setFirstName(string $firstName): static
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+
+    public function setLastName(string $lastName): static
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    public function getMobilePhone(): ?string
+    {
+        return $this->mobilePhone;
+    }
+
+    public function setMobilePhone(?string $mobilePhone): static
+    {
+        $this->mobilePhone = $mobilePhone;
+
         return $this;
     }
 }
