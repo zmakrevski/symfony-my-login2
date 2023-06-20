@@ -4,7 +4,7 @@
 
 ✔️ Add some new fields in the users and re-create the users. See if you broke something
 
-<p>Try to add time stampable fields, createdAt and updatedAt</p>
+✔️ Try to add timestampable fields, createdAt and updatedAt
 
 <p>Make the registration page</p>
 
