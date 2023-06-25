@@ -11,10 +11,10 @@
 <p>Make the registration page</p>
 Problems: 
 I should not add roles by hand. Check how I have done in Symfony 6
-Add layout to the register page
 
-<p>Make the user registration with email validation</p>
+✔️Make the user registration with email validation
 
-<p>Make forgot password feature</p>
+<p>Add forgot password feature</p>
+<p>Add login with Google, GitHub and LinkedIn feature</p>
 
 
