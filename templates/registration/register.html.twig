@@ -4,48 +4,61 @@
 
 {% block body %}
 
-    {% include 'shared/navbar.html.twig'%}
+    {% include 'shared/navbar.html.twig' %}
 
-<div class="container">
-            {% for flash_error in app.flashes('verify_email_error') %}
-                <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-            {% endfor %}
+    <div class="container">
+        {% for flash_error in app.flashes('verify_email_error') %}
+            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+        {% endfor %}
 
-    <h4 class="h3 mb-3 mt-3 font-weight-normal">Register</h4>
+        <h4 class="h3 mb-3 mt-3 font-weight-normal">Register</h4>
 
-            {{ form_errors(registrationForm) }}
+        {{ form_start(registrationForm) }}
 
+        <div class="mb-3">
+            {{ form_label(registrationForm.email, 'Email') }}
+            {{ form_widget(registrationForm.email, {'attr' : {'class': 'form-control'}}) }}
+            {{ form_errors(registrationForm.email) }}
+        </div>
 
-            {{ form_start(registrationForm) }}
-            {{ form_row(registrationForm.email, {'attr':{'class':'form-control'}}) }}
+        <div class="mb-3">
+            {{ form_label(registrationForm.plainPassword.first, 'Password') }}
+            {{ form_widget(registrationForm.plainPassword.first, {'attr' : {'class': 'form-control'}}) }}
+            {{ form_errors(registrationForm.plainPassword.first) }}
+        </div>
 
+        <div class="mb-3">
+            {{ form_label(registrationForm.plainPassword.second, 'Password') }}
+            {{ form_widget(registrationForm.plainPassword.second, {'attr' : {'class': 'form-control'}}) }}
+            {{ form_errors(registrationForm.plainPassword.second) }}
+        </div>
 
-            {# This field has not been styled, re-work the form from symfony 6? #}
-            {{ form_row(registrationForm.plainPassword,  {
-                label: 'Password'
-            }) }}
+        <div class="mb-3">
+            {{ form_label(registrationForm.firstName, 'First Name') }}
+            {{ form_widget(registrationForm.firstName, {'attr' : {'class': 'form-control'}}) }}
+            {{ form_errors(registrationForm.firstName) }}
+        </div>
 
+        <div class="mb-3">
+            {{ form_label(registrationForm.lastName, 'Last Name') }}
+            {{ form_widget(registrationForm.lastName, {'attr' : {'class': 'form-control'}}) }}
+            {{ form_errors(registrationForm.lastName) }}
+        </div>
 
-
-
-            {{ form_row(registrationForm.firstName, {
-                label: 'First Name' , 'attr':{'class':'form-control'}
-            }) }}
-
-            {{ form_row(registrationForm.lastName, {
-                label: 'Last Name' , 'attr':{'class':'form-control'}
-            }) }}
-
-            {{ form_row(registrationForm.mobilePhone, {
-                label: 'Mobile phone', 'attr':{'class':'form-control'}
-            }) }}
-
-
-            {{ form_row(registrationForm.agreeTerms) }}
-
-            <button type="submit" class="btn">Register</button>
-            </div>
-            {{ form_end(registrationForm) }}
-</div>
+        <div class="mb-3">
+            {{ form_label(registrationForm.mobilePhone, 'Mobile Phone') }}
+            {{ form_widget(registrationForm.mobilePhone, {'attr' : {'class': 'form-control'}}) }}
+            {{ form_errors(registrationForm.mobilePhone) }}
+        </div>
+        <div class="flex items-center mt-4 mb-4">
+            {{ form_widget(registrationForm.agreeTerms,{'attr':{'class':''}}) }}
+            {{ form_label(registrationForm.agreeTerms, 'I Agree with the terms and conditions') }}
+        </div>
+        <br />
+        <div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+        {{ form_end(registrationForm) }}
+    </div>
 
 {% endblock %}
