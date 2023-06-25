@@ -3,20 +3,32 @@
 {% block title %}Reset your password{% endblock %}
 
 {% block body %}
-    {% for flash_error in app.flashes('reset_password_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
-    <h1>Reset your password</h1>
+    {% include 'shared/navbar.html.twig' %}
+    <div class="container">
 
-    {{ form_start(requestForm) }}
-        {{ form_row(requestForm.email) }}
-        <div>
-            <small>
-                Enter your email address and we will send you a
-                link to reset your password.
-            </small>
-        </div>
+        {% for flash_error in app.flashes('reset_password_error') %}
+            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+        {% endfor %}
 
-        <button class="btn btn-primary">Send password reset email</button>
-    {{ form_end(requestForm) }}
+        <h4 class="h3 mb-3 mt-3 font-weight-normal">Reset your password</h4>
+
+        {{ form_start(requestForm) }}
+
+            <div class="mb-3">
+                {{ form_label(requestForm.email, 'Email') }}
+                {{ form_widget(requestForm.email, {'attr' : {'class': 'form-control'}}) }}
+
+            </div>
+            <div class="mb-3">
+                <p>
+                    Enter your email address and we will send you a
+                    link to reset your password.
+                </p>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-primary">Send password reset email</button>
+            </div>
+
+        {{ form_end(requestForm) }}
+    </div>
 {% endblock %}
