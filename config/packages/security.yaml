@@ -20,13 +20,14 @@ security:
             login_throttling: true
             form_login:
                 login_path: app_login
-                #check_path: app_login
+                check_path: app_login
+                default_target_path: admin_dashboard
                 username_parameter: email
                 password_parameter: password
                 enable_csrf: true
             logout:
                 path: app_logout
-                target: app_login
+                target: app_home_page
 
                 # where to redirect after logout
                 # target: app_any_route
