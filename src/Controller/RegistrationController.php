@@ -40,8 +40,9 @@ class RegistrationController extends AbstractController
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
+        // Register the user if the form has been submitted and valid
         if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
+            // Encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
@@ -49,16 +50,10 @@ class RegistrationController extends AbstractController
                 )
             );
 
-            // add basic user_role to the user
-            //$user->setRoles(['ROLE_USER']);
-
-            // authenticate the user after registration, there is no reason ask him to login
-
             $entityManager->persist($user);
             $entityManager->flush();
 
-
-            // generate a signed url and email it to the user
+            // Generate a signed url and email it to the user
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
                 (new TemplatedEmail())
                     ->from(new Address('zoran@makrevski.com', 'MSD User Registration'))
@@ -67,17 +62,18 @@ class RegistrationController extends AbstractController
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
 
-            // do anything else you need here, like send an email
-
+            // Authenticate the user after registration, there is no reason to force him to login after the registration
             $userAuthenticator->authenticateUser(
                 $user,
                 $formLoginAuthenticator,
                 $request
             );
 
+            // Send the registered user to the admin dashboard
             return $this->redirectToRoute('admin_dashboard');
         }
 
+        // Else, display the registration form
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
@@ -88,7 +84,7 @@ class RegistrationController extends AbstractController
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
-        // validate email confirmation link, sets User::isVerified=true and persists
+        // Validate email confirmation link, sets User::isVerified=true and persists
         try {
             $this->emailVerifier->handleEmailConfirmation($request, $this->getUser());
         } catch (VerifyEmailExceptionInterface $exception) {
@@ -100,6 +96,6 @@ class RegistrationController extends AbstractController
         // @TODO Change the redirect on success and handle or remove the flash message in your templates
         $this->addFlash('success', 'Your email address has been verified.');
 
-        return $this->redirectToRoute('app_register');
+        return $this->redirectToRoute('admin_dashboard');
     }
 }

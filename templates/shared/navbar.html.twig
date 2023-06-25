@@ -10,6 +10,8 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ path('app_home_page') }}">Home</a>
                 </li>
+
+                {# Show the login link if the user is NOT authenticated, otherwise show the logout link #}
                 <li class="nav-item">
                     {% if not app.user(is_granted('IS_AUTHENTICATED_FULLY')) %}
                         <a class="nav-link" href="{{ path('app_login') }}">Login</a>
@@ -17,9 +19,13 @@
                         <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
                     {% endif %}
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_register') }}">Register</a>
-                </li>
+
+                {# Show register link only if the user is not authenticated #}
+                {% if not app.user(is_granted('IS_AUTHENTICATED_FULLY')) %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_register') }}">Register</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </div>

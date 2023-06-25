@@ -16,6 +16,8 @@ framework:
             # sync: 'sync://'
 
         routing:
+            # THIS LINE HAS BEEN COMMENTED SO THE EMAILS CAN BE SENT ON: https://mailtrap.io
+            # NOW, WHY THE messenger.yaml AND NOT mailer.yaml had to be changed, it is beyond me, really
             #Symfony\Component\Mailer\Messenger\SendEmailMessage: async
             Symfony\Component\Notifier\Message\ChatMessage: async
             Symfony\Component\Notifier\Message\SmsMessage: async

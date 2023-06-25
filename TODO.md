@@ -10,9 +10,9 @@
 
 ✔️ Make the registration page
 
-✔️Make the user registration with email validation
+✔️ Make the user registration with email validation
 
-❌ Fix & Format the code
+✔️ Fix & Format the code
 
 ❌ Add forgot password feature
 
