@@ -50,7 +50,7 @@ class RegistrationController extends AbstractController
             );
 
             // add basic user_role to the user
-            $user->setRoles(['ROLE_USER','ROLE_ADMIN']);
+            //$user->setRoles(['ROLE_USER']);
 
             // authenticate the user after registration, there is no reason ask him to login
 
