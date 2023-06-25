@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #DD403A;">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">Symfony 6</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ path('app_home_page') }}">Home</a>
+                </li>
+
+                {# Show the login link if the user is NOT authenticated, otherwise show the logout link #}
+                <li class="nav-item">
+                    {% if not app.user(is_granted('IS_AUTHENTICATED_FULLY')) %}
+                        <a class="nav-link" href="{{ path('app_login') }}">Login</a>
+                    {% else %}
+                        <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
+                    {% endif %}
+                </li>
+
+                {# Show register link only if the user is not authenticated #}
+                {% if not app.user(is_granted('IS_AUTHENTICATED_FULLY')) %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_register') }}">Register</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

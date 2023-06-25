@@ -31,12 +31,10 @@ use Zenstruck\Foundry\RepositoryProxy;
 final class UserFactory extends ModelFactory
 {
     /**
-     * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#factories-as-services
+     * @see  https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#factories-as-services
      *
      * @todo inject services if required
      */
-
-    //private UserPasswordHasherInterface $passwordHasher;
 
     public function __construct(private UserPasswordHasherInterface $passwordHasher)
     {
@@ -44,19 +42,19 @@ final class UserFactory extends ModelFactory
     }
 
     /**
-     * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories
+     * @see  https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories
      *
      * @todo add your default values here
      */
     protected function getDefaults(): array
     {
         return [
-            'email' => self::faker()->email(),
+            'email'         => self::faker()->email(),
             'plainPassword' => 'tada',
-            'roles' => ['ROLE_USER'],
-            'firstName' => self::faker()->firstNameMale,
-            'lastName' => self::faker()->lastName(),
-            'mobilePhone' => self::faker()->phoneNumber()
+            'roles'         => ['ROLE_USER'],
+            'firstName'     => self::faker()->firstNameMale,
+            'lastName'      => self::faker()->lastName(),
+            'mobilePhone'   => self::faker()->phoneNumber(),
         ];
     }
 
@@ -65,12 +63,8 @@ final class UserFactory extends ModelFactory
      */
     protected function initialize(): self
     {
-        // TODO: TEST WILL THIS CODE WORK ONLY WITH THE RETURN THIS
-        //        return $this
-        //            // ->afterInstantiate(function(User $user): void {});
-
         return $this
-            ->afterInstantiate(function(User $user) {
+            ->afterInstantiate(function (User $user) {
                 if ($user->getPlainPassword()) {
                     $user->setPassword(
                         $this->passwordHasher->hashPassword($user, $user->getPlainPassword())

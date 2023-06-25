@@ -1,15 +1,21 @@
 ### TODO:
 
+✔️ Start working with branches, create new branch for each feature
+
 ✔️ Make the home page, and add link to the login page
 
 ✔️ Add some new fields in the users and re-create the users. See if you broke something
 
 ✔️ Try to add timestampable fields, createdAt and updatedAt
 
-<p>Make the registration page</p>
+✔️ Make the registration page
 
-<p>See if you can make the user registration with email validation</p>
+✔️ Make the user registration with email validation
 
-<p>Make forgot password feature</p>
+✔️ Fix & Format the code
 
-<p>Start working with branches, create new branch for each feature</p>
+❌ Add forgot password feature
+
+❌ Add login with Google, GitHub and LinkedIn feature
+
+

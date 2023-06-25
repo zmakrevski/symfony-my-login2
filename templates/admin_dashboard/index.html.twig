@@ -3,15 +3,11 @@
 {% block title %}Admin Dashboard{% endblock %}
 
 {% block body %}
-
-<div class="container">
-<div class="example-wrapper">
-    <h1>Admin Dashboard</h1>
-
-
-    <a href="#">Users</a> &nbsp;&nbsp;&nbsp;<a href="{{ path('app_logout') }}">Logout</a>
-
-
-</div>
-</div>
+    {% include 'shared/navbar.html.twig' %}
+    <div class="container">
+        <div class="example-wrapper">
+            <h4 class="h3 mb-3 mt-3 font-weight-normal">Admin dashboard</h4>
+            <p>If you can see this page, it means that you are fully authenticated</p>
+        </div>
+    </div>
 {% endblock %}
