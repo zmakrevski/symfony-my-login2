@@ -3,10 +3,28 @@
 {% block title %}Reset your password{% endblock %}
 
 {% block body %}
-    <h1>Reset your password</h1>
+    {% include 'shared/navbar.html.twig' %}
+    <div class="container">
+        <h4 class="h3 mb-3 mt-3 font-weight-normal">Reset your password</h4>
 
-    {{ form_start(resetForm) }}
-        {{ form_row(resetForm.plainPassword) }}
-        <button class="btn btn-primary">Reset password</button>
-    {{ form_end(resetForm) }}
+        {{ form_start(resetForm) }}
+
+        <div class="mb-3">
+            {{ form_label(resetForm.plainPassword.first, 'Password') }}
+            {{ form_widget(resetForm.plainPassword.first, {'attr' : {'class': 'form-control'}}) }}
+            {{ form_errors(resetForm.plainPassword.first) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(resetForm.plainPassword.second, 'Password') }}
+            {{ form_widget(resetForm.plainPassword.second, {'attr' : {'class': 'form-control'}}) }}
+            {{ form_errors(resetForm.plainPassword.second) }}
+        </div>
+
+        <div class="mb-3">
+            <button class="btn btn-primary">Reset password</button>
+        </div>
+
+        {{ form_end(resetForm) }}
+    </div>
 {% endblock %}
