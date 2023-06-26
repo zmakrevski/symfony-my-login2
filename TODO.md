@@ -14,7 +14,7 @@
 
 ✔️ Fix & Format the code
 
-❌ Add forgot password feature
+✔️ Add forgot password feature
 
 ❌ Add login with Google, GitHub and LinkedIn feature
 
