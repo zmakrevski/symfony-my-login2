@@ -17,6 +17,12 @@
             {% endif %}
 
             <h4 class="h3 mb-3 mt-3 font-weight-normal">Please sign in</h4>
+
+            <div class="mb-3">
+                <a href="{{ path('github_connect') }}">Sign in with Github</a>
+
+            </div>
+
             <div class="mb-3">
                 <label for="inputEmail">Email</label>
                 <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
